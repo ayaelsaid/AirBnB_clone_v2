@@ -25,7 +25,6 @@ class FileStorage:
         with open(FileStorage.__file_path, 'w') as f:
             json.dump(json_objects, f)
 
-
     def reload(self):
         """Loads storage dictionary from file"""
         from models.base_model import BaseModel
