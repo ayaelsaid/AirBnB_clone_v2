@@ -25,13 +25,25 @@ class Testconsole(unittest.TestCase):
         self.assertIsInstance(result, str)
 
     def test_datatype_value(self):
-        result_str = HBNBCommand().do_create('User name="John" age=30')
+        result_str = HBNBCommand().do_create('Place city_id="0001"\
+                                             user_id="0001" name="My_little_house"\
+                                             number_rooms=4 number_bathrooms=2 max_guest=10\
+                                             price_by_night=300\
+                                             latitude=37.773972 longitude=-122.431297')
         self.assertIsInstance(result_str, str)
 
-        result_int = HBNBCommand().do_create('User name="John" age=30')
+        result_int = HBNBCommand().do_create('Place city_id="0001"\
+                                             user_id="0001" name="My_little_house"\
+                                             number_rooms=4 number_bathrooms=2 max_guest=10\
+                                             price_by_night=300\
+                                             latitude=37.773972 longitude=-122.431297')
         self.assertIsInstance(result_int, int)
 
-        result_float = HBNBCommand().do_create('User name="John" age=30.5')
+        result_float = HBNBCommand().do_create('Place city_id="0001"\
+                                               user_id="0001" name="My_little_house"\
+                                               number_rooms=4 number_bathrooms=2 max_guest=10\
+                                               price_by_night=300\
+                                               latitude=37.773972 longitude=-122.431297')
         self.assertIsInstance(result_float, float)
 
 
