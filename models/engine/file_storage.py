@@ -22,7 +22,7 @@ class FileStorage:
         json_objects = {}
         for key, val in FileStorage.__objects.items():
             json_objects[key] = val.to_dict()
-         with open(FileStorage.__file_path, 'w') as f:
+        with open(FileStorage.__file_path, 'w') as f:
             json.dump(json_objects, f)
 
 
