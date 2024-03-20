@@ -10,7 +10,7 @@ import unittest
 
 
 class Testconsole(unittest.TestCase):
- 
+
     def test_empty_args(self):
         result = HBNBCommand().do_create("")
         self.assertEqual(result, "** class name missing **")
@@ -20,7 +20,8 @@ class Testconsole(unittest.TestCase):
         self.assertEqual(result, "** class doesn't exist **")
 
     def test_do_dic(self):
-        result = HBNBCommand().do_create('User name="California" id=4 grad=5.5')
+        result = HBNBCommand().do_create('User name="California"\
+                                         id=4 grad=5.5')
         self.assertIsInstance(result, str)
 
     def test_datatype_value(self):
