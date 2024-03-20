@@ -25,7 +25,7 @@ class test_basemodel(unittest.TestCase):
         del self.model
         try:
             os.remove('file.json')
-        except:
+        except FileNotFoundError:
             pass
 
     def test_default(self):
@@ -64,7 +64,7 @@ class test_basemodel(unittest.TestCase):
 
     def test_id(self):
         """ """
-       self.assertIsInstance(self.model.id, str)
+        self.assertIsInstance(self.model.id, str)
 
     def test_updated_at(self):
         """ """
