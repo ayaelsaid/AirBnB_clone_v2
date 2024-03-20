@@ -26,13 +26,13 @@ class Testconsole(unittest.TestCase):
 
     def test_datatype_value(self):
         result_str = HBNBCommand().do_create('User name="John" age=30')
-        self.assertIsInstance(result, User)
+        self.assertIsInstance(result_str, str)
 
         result_int = HBNBCommand().do_create('User name="John" age=30')
-        self.assertIsInstance(result, User)
+        self.assertIsInstance(result_int, int)
 
         result_float = HBNBCommand().do_create('User name="John" age=30.5')
-        self.assertIsInstance(result, User)
+        self.assertIsInstance(result_float, float)
 
 
 if __name__ == "__main__":
