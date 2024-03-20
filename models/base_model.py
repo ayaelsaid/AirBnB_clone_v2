@@ -4,17 +4,17 @@ import uuid
 from datetime import datetime
 import MySQLdb
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, String, DateTime 
-
+from sqlalchemy import Column, String, DateTime
 
 Base = declarative_base()
 
 
 class BaseModel:
     """A base class for all hbnb models"""
-    id = column(String(60), nullable=False, primary key=True) 
+    id = column(String(60), nullable=False, primary key=True)
     created_at = column(DateTime, nullable=False, default=datetime.utcnow())
     updated_at = column(DateTime, nullable=False, default=datetime.utcnow())
+
     def __init__(self, *args, **kwargs):
         """Instatntiates a new model"""
         if not kwargs:
@@ -25,11 +25,12 @@ class BaseModel:
         else:
             for key, value in kwargs.items():
                 if key == 'updated_at' or key == 'created_at':
-                    kwargs[key] = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
+                    kwargs[key] = datetime.strptime(value,
+                                                    '%Y-%m-%dT%H:%M:%S.%f')
             if 'created_at' not in kwargs:
                 self.created_at = datetime.now()
             if 'updated_at' not in kwargs:
-                self.updated_at = datetime.now()  
+                self.updated_at = datetime.now()
 
     def __str__(self):
         """Returns a string representation of the instance"""
