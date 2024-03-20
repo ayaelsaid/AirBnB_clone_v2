@@ -117,14 +117,12 @@ class HBNBCommand(cmd.Cmd):
         """ Create an object of any class"""
 
         if not args:
-            print("** class name missing **")
-            return
+            return "** class name missing **"
         args_split = args.split(',')
         name_class = args_split[0]
 
         if name_class not in HBNBCommand.classes:
-            print("** class doesn't exist **")
-            return
+            return "** class doesn't exist **"
         dic = {}
         allparams = args_split[1:]
         for param in allparams:
