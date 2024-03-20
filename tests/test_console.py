@@ -32,20 +32,6 @@ class Testconsole(unittest.TestCase):
                                              latitude=37.773972 longitude=-122.431297')
         self.assertIsInstance(result_str, str)
 
-        result_int = HBNBCommand().do_create('Place city_id="0001"\
-                                             user_id="0001" name="My_little_house"\
-                                             number_rooms=4 number_bathrooms=2 max_guest=10\
-                                             price_by_night=300\
-                                             latitude=37.773972 longitude=-122.431297')
-        self.assertIsInstance(result_int, int)
-
-        result_float = HBNBCommand().do_create('Place city_id="0001"\
-                                               user_id="0001" name="My_little_house"\
-                                               number_rooms=4 number_bathrooms=2 max_guest=10\
-                                               price_by_night=300\
-                                               latitude=37.773972 longitude=-122.431297')
-        self.assertIsInstance(result_float, float)
-
 
 if __name__ == "__main__":
     unittest.main()
