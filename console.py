@@ -121,17 +121,17 @@ class HBNBCommand(cmd.Cmd):
             return
         args_split = args.split(',')
         name_class = args_split[0]
-   
+
         if name_class not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
         dic = {}
-        allparams= args_split[1:]
+        allparams = args_split[1:]
         for param in allparams:
             if "=" in param:
                 elem = param.split('=', 1)
                 key = elem[0]
-                value = elem[1] 
+                value = elem[1]
                 if value.startswith('"') and value.endswith('"'):
                     value = value[1:-1]
                     value = value.replace('\\', '')
@@ -142,11 +142,10 @@ class HBNBCommand(cmd.Cmd):
                     value = int(value)
                 dic[key] = value
 
-        new_instance = HBNBCommand.classes[name_class](** dic)   
+        new_instance = HBNBCommand.classes[name_class](** dic)
         storage.save()
         print(new_instance.id)
         storage.save()
-
 
     def help_create(self):
         """ Help information for the create method """
