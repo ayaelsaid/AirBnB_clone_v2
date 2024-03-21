@@ -12,10 +12,11 @@ class DBStorage:
     """handle storage of database"""
     __engine = None
     __session = None
-    
+
     def __init__(self):
         """Public instance methods"""
-        self.__engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}".format(
+        self.__engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}"
+            .format(
             os.getenv("HBNB_MYSQL_USER"),
             os.getenv("HBNB_MYSQL_PWD"),
             os.getenv("HBNB_MYSQL_DB")),
@@ -25,17 +26,17 @@ class DBStorage:
 
     def all(self, cls=None):
       """query all database"""
-        session = self.__session()
-        if cls:
-            objects = session.query(cls).all()
-        else:
-            objects = session.query(Base).all()
-            obj_dic = {}
-            for obj in objects:
-                key = "{}.{}".format(obj.__class__.__name__, obj.id)
-                obj_dic[key] = obj
-            session.close()
-        return result
+      session = self.__session()
+      if cls:
+          objects = session.query(cls).all()
+      else:
+          objects = session.query(Base).all()
+          obj_dic = {}
+          for obj in objects:
+              key = "{}.{}".format(obj.__class__.__name__, obj.id)
+              obj_dic[key] = obj
+          session.close()
+          return result
 
     def new(self, obj):
         """add new odject"""
