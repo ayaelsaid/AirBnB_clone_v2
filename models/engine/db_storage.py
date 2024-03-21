@@ -24,18 +24,18 @@ class DBStorage:
             Base.metadata.drop_all(bind=self.__engine)
 
     def all(self, cls=None):
-      """query all database"""
-      session = self.__session()
-      if cls:
-          objects = session.query(cls).all()
-      else:
-          objects = session.query(Base).all()
-          obj_dic = {}
-          for obj in objects:
-              key = "{}.{}".format(obj.__class__.__name__, obj.id)
-              obj_dic[key] = obj
-          session.close()
-          return result
+        """query all database"""
+        session = self.__session()
+        if cls:
+            objects = session.query(cls).all()
+        else:
+            objects = session.query(Base).all()
+            obj_dic = {}
+            for obj in objects:
+                key = "{}.{}".format(obj.__class__.__name__, obj.id)
+                obj_dic[key] = obj
+            session.close()
+            return result
 
     def new(self, obj):
         """add new odject"""
