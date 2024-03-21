@@ -28,7 +28,7 @@ class Place(BaseModel, Base):
                                backref='place')
         amenities = relationship('Amenity', secondary=association_table,
                                  back_populates='place_amenity')
-   
+
     else:
         @property
         def reviews(self):
@@ -42,7 +42,7 @@ class Place(BaseModel, Base):
                     new_list.append(re)
             return new_list
 
-       @property
+        @property
         def amenities(self):
             """ method for amenities """
             from models import storage
