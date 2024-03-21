@@ -14,7 +14,7 @@ class State(BaseModel, Base):
         mycities = relationship("City", cascade="all, delete-orphan",
                                 backref="state")
     else:
-        
+
         def mycities(self):
             """ method for cities """
             from models import storage
