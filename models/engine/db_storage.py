@@ -15,8 +15,8 @@ class DBStorage:
 
     def __init__(self):
         """Public instance methods"""
-        self.__engine =
-            create_engine("mysql+mysqldb://{}:{}@localhost/{}".format(
+        self.__engine = create_engine(
+            "mysql+mysqldb://{}:{}@localhost/{}".format(
             os.getenv("HBNB_MYSQL_USER"),
             os.getenv("HBNB_MYSQL_PWD"),
             os.getenv("HBNB_MYSQL_DB")),
