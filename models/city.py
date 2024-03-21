@@ -2,6 +2,7 @@
 """ City Module for HBNB project """
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy.orm import relationship
 
 
 class City(BaseModel, Base):
@@ -9,3 +10,4 @@ class City(BaseModel, Base):
     __tablename__ = 'cities'
     state_id = column(string(60), nullable=False, ForeignKey('states.id'))
     name = column(String(128), nullable=False)
+    places = relationship('Place', cascade='all, delete', backref='cities')
