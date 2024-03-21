@@ -4,6 +4,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
 import os
+from models.amenity import Amenity
 
 
 class Place(BaseModel, Base):
@@ -25,6 +26,9 @@ class Place(BaseModel, Base):
     if os.getenv('HBNB_TYPE_STORAGE') == 'db':
         reviews = relationship('Review', cascade='all, delete',
                                backref='place')
+        amenities = relationship('Amenity', secondary=association_table,
+                                 back_populates='place_amenity')
+   
     else:
         @property
         def reviews(self):
@@ -37,3 +41,21 @@ class Place(BaseModel, Base):
                 if re.place_id == self.id:
                     new_list.append(re)
             return new_list
+
+       @property
+        def amenities(self):
+            """ method for amenities """
+            from models import storage
+            from models.amenity import Amenity
+            new_list = []
+            for amenity_id in self.amenity_ids:
+                amenity = storage.get(Amenity, amenity_id)
+                if amenity:
+                    new_list.append(amenity)
+            return new_list
+
+        @amenities.setter
+        def amenities(self, obj):
+            """method for adding anAmenity.id"""
+            if type(obj) is Amenity and obj.id not in self.amenity_ids:
+                self.amenity_ids.append(obj.id)                    
