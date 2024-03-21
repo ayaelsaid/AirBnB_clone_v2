@@ -20,10 +20,11 @@ class Place(BaseModel, Base):
     longitude = Column(Float, nullable=False)
     amenity_ids = []
 
-    if os.gentev('HBNB_TYPE_STORAGE') = 'db'
-        reviews = relationship('Review', cascade='all, delete', backref='place')
+    if os.gentev('HBNB_TYPE_STORAGE') = 'db':
+        reviews = relationship('Review', cascade='all, delete',
+                               backref='place')
     else:
-    
+
         @property
         def reviews(self):
             """ method for reviews """
